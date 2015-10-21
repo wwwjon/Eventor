@@ -1,13 +1,20 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Eventor</title>
-	</head>
-    <body>
-		<div data-ng-app>
-	        <h1>{{ text="AngularJS ist ein Open-Source-Framework des US-amerikanischen Unternehmens Google Inc."; text+' ('+text.length+' Zeichen)'}}</h1>
-		</div>
-		<script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
-	</body>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>Eventor</title>
+</head>
+<body>
+<div data-ng-app="eventor">
+    <h1>Eventor</h1>
+    <ul data-ng-controller="EventListController">
+        <li data-ng-repeat="event in events">
+            <strong>{{event.name}}</strong><br />
+            {{event.location.name}}, {{event.location.street}}, {{event.location.plz}} {{event.location.city}}<br />
+            {{event.event.begin | date:"dd.MM.yy HH:mm"}} - {{event.event.end | date:"dd.MM.yy HH:mm"}}
+        </li>
+    </ul>
+</div>
+<script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
+<body>
 </html>
