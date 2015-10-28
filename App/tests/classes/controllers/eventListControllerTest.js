@@ -7,7 +7,7 @@ define(['app/controllers/eventListController'], function (EventListController) {
                 var scope = {};
                 var eventListController = new EventListController(scope);
 
-                expect(0).toBe(eventListController.scope.events.length);
+                expect(3).toBe(eventListController.scope.events.length);
             });
         });
     });

@@ -1,10 +1,13 @@
-define(['frameworks/angular', 'app/controllers/eventListController'],
-    function (Angular, EventListController) {
+define(['frameworks/angular', 'app/controllers/eventListController', 'app/services/storageService'],
+    function (Angular, EventListController, StorageService) {
         'use strict';
 
         var Eventor = Angular.module('eventor', []);
-        Eventor.controller('EventListController', EventListController);
-        EventListController.$inject = ['$scope'];
+
+		Eventor.service('storageService', StorageService);
+
+		EventListController.$inject = ['$scope', 'StorageService'];
+		Eventor.controller('EventListController', EventListController);
 
         return Eventor;
 	});
