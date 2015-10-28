@@ -14,6 +14,11 @@ require.config({
 	}
 });
 
-define(['frameworks/angular', 'app/modules/eventor'], function (Angular, Eventor) {
-    return Angular.bootstrap(Eventor);
+
+
+require(['frameworks/angular', 'app/modules/eventor'], function (Angular, Eventor) {
+	var app = Angular.module("eventor");
+	Angular.element(document).ready(function() {
+		Angular.bootstrap(document, [app.name]);
+	});
 });

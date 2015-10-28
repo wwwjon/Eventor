@@ -7,4 +7,4 @@ define(['frameworks/angular', 'app/controllers/eventListController'],
         EventListController.$inject = ['$scope'];
 
         return Eventor;
-    });
+	});
