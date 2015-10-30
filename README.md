@@ -1,2 +1,2 @@
 # Eventor
-# test
+Smart Event Management App
