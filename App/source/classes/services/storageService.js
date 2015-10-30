@@ -62,3 +62,4 @@ define(['app/model/event'], function(Event) {
 
 	return StorageService;
 });
+

@@ -1,13 +1,14 @@
-define(['frameworks/angular', 'app/controllers/eventListController', 'app/services/storageService'],
-    function (Angular, EventListController, StorageService) {
-        'use strict';
 
-        var Eventor = Angular.module('eventor', []);
+// declare dependency to angular (similar to import in java)
+define(['frameworks/angular', 'app/controllers/eventListController','app/services/storageService'], function (Angular, EventListController, StorageService) {
 
-		Eventor.service('storageService', StorageService);
+	var Eventor = Angular.module('eventor', []);
 
-		EventListController.$inject = ['$scope', 'StorageService'];
-		Eventor.controller('EventListController', EventListController);
+	Eventor.service('StorageService', StorageService);
+	EventListController.$inject = ['$scope', 'StorageService'];
+	Eventor.controller('EventListController', EventListController);
 
-        return Eventor;
-	});
+	//EventListController.$inject = ['$scope'];
+
+	return Eventor;
+});
