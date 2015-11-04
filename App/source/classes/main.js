@@ -3,6 +3,7 @@ require.config({
 	baseUrl: './',
 	paths: {
         'frameworks/angular': 'frameworks/angular/angular.min',
+        'libraries/angularRoute': 'libraries/angular/angular-route',
         'app': 'classes'
 	},
 
@@ -10,15 +11,17 @@ require.config({
 	shim: {
 		'frameworks/angular': {
 			exports: 'angular'
-		}
+		},
+        'libraries/angularRoute': {
+            deps: ['frameworks/angular']
+        }
 	}
 });
 
 
 
 require(['frameworks/angular', 'app/modules/eventor'], function (Angular, Eventor) {
-	var app = Angular.module("eventor");
 	Angular.element(document).ready(function(){
-		Angular.bootstrap(document,[app.name]);
+		Angular.bootstrap(document,[Eventor.name]);
 	})
 });

@@ -1,0 +1,7 @@
+<ul>
+    <li data-ng-repeat="event in events">
+        <a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong><br /></a>
+        {{event.id}}, {{event.location.name}}, {{event.location.street}}, {{event.location.zipCode}} {{event.location.city}}<br />
+        {{event.event.begin | date:"dd.MM.yy HH:mm"}} - {{event.event.end | date:"dd.MM.yy HH:mm"}}
+    </li>
+</ul>

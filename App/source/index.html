@@ -3,18 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <title>Eventor</title>
+    <!--<link rel="stylesheet" href="./resources/styles/app.css">-->
 </head>
 <body>
-<div>
-	<h1>Eventor</h1>
-	<ul data-ng-controller="EventListController">
-		<li data-ng-repeat="event in events">
-			<strong>{{event.name}}</strong><br />
-			{{event.location.name}}, {{event.location.street}}, {{event.location.zipCode}} {{event.location.city}}<br />
-			{{event.event.begin | date:"dd.MM.yy HH:mm"}} - {{event.event.end | date:"dd.MM.yy HH:mm"}}
-		</li>
-	</ul>
-	</div>
+<h1>Eventor</h1>
+<div data-ng-view></div>
 <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>
 </html>
