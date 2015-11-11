@@ -1,4 +1,4 @@
-define(['tests/factories/eventFactory', 'app/services/storageService'], function (EventFactory, storageService) {
+define(['tests/factories/eventFactory', 'app/repository/EventRepository'], function (EventFactory, EventRepository) {
     'use strict';
 
     describe('EventStorageService test suite', function() {
@@ -6,7 +6,7 @@ define(['tests/factories/eventFactory', 'app/services/storageService'], function
 
         // setup
         beforeEach(function() {
-            StorageService = new storageService();
+            StorageService = new EventRepository();
             event = EventFactory.createEvent();
         });
 

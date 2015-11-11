@@ -1,16 +1,16 @@
 
 // declare dependency to angular (similar to import in java)
-define(['frameworks/angular', 'app/controllers/event/listController', 'app/controllers/event/detailController','app/services/storageService', 'libraries/angularRoute'],
-    function (Angular, EventListController, EventDetailController, StorageService) {
+define(['frameworks/angular', 'app/controllers/event/listController', 'app/controllers/event/detailController','app/repository/EventRepository', 'libraries/angularRoute'],
+    function (Angular, EventListController, EventDetailController, EventRepository) {
 
 	var Eventor = Angular.module('eventor', ['ngRoute']);
 
-	Eventor.service('StorageService', StorageService);
+	Eventor.service('EventRepository', EventRepository);
 
-	EventListController.$inject = ['$scope', 'StorageService'];
+	EventListController.$inject = ['$scope', 'EventRepository'];
 	Eventor.controller('EventListController', EventListController);
 
-    EventDetailController.$inject = ['$scope', '$routeParams', 'StorageService'];
+    EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository'];
     Eventor.controller('EventDetailController', EventDetailController);
 
 	//EventListController.$inject = ['$scope'];
