@@ -9,7 +9,7 @@ define(['tests/factories/eventFactory', 'app/repository/EventRepository'], funct
             StorageService = new EventRepository();
             event = EventFactory.createEvent();
         });
-
+		
         describe('get()', function() {
             beforeEach(function() {
                 // TODO
