@@ -5,8 +5,8 @@ define(['app/controllers/event/listController', 'frameworks/angular', 'libraries
 
     beforeEach(AngularMocks.inject(function ($rootScope) {
         var scope = $rootScope.$new();
-        var StorageService = new EventRepository();
-        eventListController = new EventListController(scope, EventRepository);
+        var eventRepository = new EventRepository();
+        eventListController = new EventListController(scope, eventRepository);
     }));
 
     describe('EventListController', function() {
