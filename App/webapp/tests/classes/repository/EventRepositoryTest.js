@@ -1,59 +1,59 @@
-define(['tests/factories/eventFactory', 'app/repository/EventRepository'], function (EventFactory, EventRepository) {
+define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/EventRepository', 'libraries/angularMocks'], function (EventFactory, Event, EventRepository, AngularMocks) {
     'use strict';
 
-    describe('EventStorageService test suite', function() {
-        var event, StorageService;
+    describe('EventRepository', function() {
+        var event, eventRepository, $http, $httpBackend;
 
         // setup
-        beforeEach(function() {
-            StorageService = new EventRepository();
+        beforeEach(AngularMocks.inject(function($injector) {
+            $http = $injector.get('$http');
+            $httpBackend = $injector.get('$httpBackend');
+
+            eventRepository = new EventRepository($http);
             event = EventFactory.createEvent();
+
+            $httpBackend.when('GET', eventRepository.urls.all).respond({
+                events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]
+            });
+        }));
+
+        afterEach(function() {
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
         });
-		
-        describe('get()', function() {
-            beforeEach(function() {
-                // TODO
-            });
-
-            describe('by object id', function() {
-                it('returns the object', function() {
-                    // TODO
-                });
-            });
-
-            describe('by inexistent object id', function() {
-                it('returns null', function() {
-                    // TODO
-                });
-            });
-        });
-
 
         describe('all()', function() {
             it('returns an Array', function() {
-                // TODO
+                $httpBackend.expectGET(eventRepository.urls.all);
+                var events = null;
+                eventRepository.all(function(eventList) {
+                    events = eventList;
+                });
+                $httpBackend.flush();
+                expect(events).toEqual(jasmine.any(Array));
             });
-        });
 
-        describe('add()', function() {
-            it('inserts element', function() {
-                // TODO
+            it('returns two events', function() {
+                $httpBackend.expectGET(eventRepository.urls.all);
+                var events = null;
+                eventRepository.all(function(eventList) {
+                    events = eventList;
+                });
+                $httpBackend.flush();
+                expect(events.length).toEqual(2);
             });
 
-            describe('same element again', function() {
-                // TODO
-
-                beforeEach(function() {
-                    // TODO
+            it('returns real javascript objects', function() {
+                $httpBackend.expectGET(eventRepository.urls.all);
+                var events = null;
+                eventRepository.all(function(eventList) {
+                    events = eventList;
                 });
-
-                it('doesn\'t affect repository size', function() {
-                    // TODO
-                });
-
-                it('returns false', function() {
-                    // TODO
-                });
+                $httpBackend.flush();
+                console.log(events[0]);
+                console.log(Event);
+                expect(events[0]).toEqual(jasmine.any(Event));
+                expect(events[1]).toEqual(jasmine.any(Event));
             });
         });
     });
