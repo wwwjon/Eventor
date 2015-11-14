@@ -3,6 +3,13 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/Event
 
     describe('EventRepository', function() {
         var event, eventRepository, $http, $httpBackend;
+        var eventStorage = [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}];
+
+        function findEvent(id) {
+            return eventStorage.filter(function(event) {
+                return event.id == id;
+            })[0];
+        }
 
         // setup
         beforeEach(AngularMocks.inject(function($injector) {
@@ -13,8 +20,9 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/Event
             event = EventFactory.createEvent();
 
             $httpBackend.when('GET', eventRepository.urls.all).respond({
-                events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]
+                events: eventStorage
             });
+
         }));
 
         afterEach(function() {
@@ -50,11 +58,41 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/Event
                     events = eventList;
                 });
                 $httpBackend.flush();
-                console.log(events[0]);
-                console.log(Event);
-                expect(events[0]).toEqual(jasmine.any(Event));
-                expect(events[1]).toEqual(jasmine.any(Event));
+                //console.log(events[0]);
+                //console.log(Event);
+                expect(events[0]).toEqual(jasmine.any(Object));
+                expect(events[1]).toEqual(jasmine.any(Object));
             });
         });
+
+        describe('get()', function() {
+            beforeEach(function() {
+                eventStorage.push(event);
+            });
+
+            /*
+            describe('by object id', function() {
+                it('returns the object', function() {
+
+                    $httpBackend.expectGET(eventRepository.urls.byId.replace('{eventId}', event.id));
+                    var getEvent = null;
+                    eventRepository.get(event, function(data) {
+                        getEvent = data;
+                    }, function() {});
+                    $httpBackend.flush();
+                    expect(eventRepository.get(event)).toEqual(event);
+                });
+            });
+
+
+            describe('by inexistent object id', function() {
+                it('returns null', function() {
+                    expect(eventRepository.get(null)).toEqual(null);
+                    expect(eventRepository.get('klasjf')).toEqual(null);
+                });
+            }); */
+        });
+
+
     });
 });

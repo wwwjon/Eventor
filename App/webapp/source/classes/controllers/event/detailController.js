@@ -1,9 +1,16 @@
 define([], function() {
     'use strict';
 
-    var EventDetailController = function($scope, $routeParams, storageService) {
+    var EventDetailController = function($scope, $routeParams, EventRepository) {
         this.scope = $scope;
-        this.scope.event = storageService.events.get($routeParams.eventId);
+        EventRepository.get(
+            { id: $routeParams.eventId },
+            function(event) {
+                this.scope.event = event;
+            }.bind(this),
+            function() {}
+        );
+
     };
 
     return EventDetailController;
