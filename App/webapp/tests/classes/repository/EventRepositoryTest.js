@@ -23,6 +23,20 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/Event
                 events: eventStorage
             });
 
+            $httpBackend.when('GET', eventRepository.urls.byId.replace('{eventId}', "")).respond({
+                events: eventStorage
+            });
+
+            $httpBackend.when('GET', /\/api\/events\/(\d*)/).respond(function(method, url, data, headers) {
+                var getID = url.replace(eventRepository.urls.all + "/", "");
+                var getEvent = findEvent(getID);
+                if (getEvent) {
+                    return [200, findEvent(getID)];
+                } else {
+                    return [404, 'Event (id '+ getID +') not found.'];
+                }
+            });
+
         }));
 
         afterEach(function() {
@@ -58,39 +72,52 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/Event
                     events = eventList;
                 });
                 $httpBackend.flush();
-                //console.log(events[0]);
-                //console.log(Event);
                 expect(events[0]).toEqual(jasmine.any(Object));
                 expect(events[1]).toEqual(jasmine.any(Object));
             });
         });
 
         describe('get()', function() {
-            beforeEach(function() {
-                eventStorage.push(event);
-            });
 
-            /*
             describe('by object id', function() {
                 it('returns the object', function() {
-
+                    eventStorage.push(event);
                     $httpBackend.expectGET(eventRepository.urls.byId.replace('{eventId}', event.id));
                     var getEvent = null;
                     eventRepository.get(event, function(data) {
                         getEvent = data;
                     }, function() {});
                     $httpBackend.flush();
-                    expect(eventRepository.get(event)).toEqual(event);
+                    expect(getEvent).toEqual(event);
                 });
             });
 
 
-            describe('by inexistent object id', function() {
+            describe('by null object', function() {
                 it('returns null', function() {
-                    expect(eventRepository.get(null)).toEqual(null);
-                    expect(eventRepository.get('klasjf')).toEqual(null);
+                    var getEvent = 1;
+                    eventRepository.get(null, function(data) {
+                        getEvent = data;
+                    }, function() {});
+                    expect(getEvent).toBeNull();
                 });
-            }); */
+            });
+
+            describe('by inexistent object id', function() {
+                var failEvent = { id: "xxxxx" };
+                it('returns 404', function() {
+                    $httpBackend.expectGET(eventRepository.urls.byId.replace('{eventId}', failEvent.id));
+                    var getEvent = 1;
+                    eventRepository.get(failEvent, function(data) {
+                        getEvent = data;
+                    }, function(error) {
+                        console.log(error);
+                        getEvent = null;
+                    });
+                    $httpBackend.flush();
+                    expect(getEvent).toBeNull();
+                });
+            });
         });
 
 

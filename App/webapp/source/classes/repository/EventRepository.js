@@ -19,11 +19,15 @@ define(['app/model/event'], function(Event) {
         };
 
         this.get = function(event, successCallback, errorCallback) {
-            $http.get(this.urls.byId.replace('{eventId}', event.id))
-                .success(function(data) {
-                    successCallback(Event.createDTO(data));
-                })
-                .error(errorCallback);
+            if (!event || !event.hasOwnProperty('id')) {
+                successCallback(null);
+            } else {
+                $http.get(this.urls.byId.replace('{eventId}', event.id))
+                    .success(function(data) {
+                        successCallback(Event.createDTO(data));
+                    })
+                    .error(errorCallback);
+            }
         };
 
         this.add = function(event, successCallback, errorCallback) {
