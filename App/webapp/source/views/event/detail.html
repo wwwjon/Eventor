@@ -1,0 +1,25 @@
+<h2>{{event.name}}<h2>
+<p>{{event.description}}</p>
+<p data-ng-if="event.maximalAmoutOfGuests">
+    <strong>Maximal amount of guests:</strong>
+    {{event.maximalAmoutOfGuests}}
+</p>
+
+<h3 data-ng-if="event.targetGroup">Target group</h3>
+<p data-ng-if="event.targetGroup">{{event.targetGroup}}</p>
+
+<h3 data-ng-if="event.contributionsDescription">Contributions</h3>
+<p data-ng-if="event.contributionsDescription">{{event.contributionsDescription}}</p>
+
+<h3>Location</h2>
+<p>
+    <strong>{{event.location.name}}</strong><br />
+    {{event.location.street}}<br />
+    {{event.location.plz}} {{event.location.city}}
+</p>
+
+<h3>Date & time</h3>
+<p>{{event.begin | date:"dd.MM.yy HH:mm"}} - {{event.end | date:"dd.MM.yy HH:mm"}}</p>
+
+<h3 data-ng-if="event.preparation">Preparation</h3>
+<p data-ng-if="event.preparation">{{event.preparationBegin | date:"dd.MM.yy HH:mm"}} - {{event.preparationEnd | date:"dd.MM.yy HH:mm"}}</p>
