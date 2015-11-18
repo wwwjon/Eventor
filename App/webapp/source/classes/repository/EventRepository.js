@@ -37,6 +37,18 @@ define(['app/model/event'], function(Event) {
                 })
                 .error(errorCallback);
         };
+
+		this.update = function(event, successCallback, errorCallback) {
+			if (!event || !event.hasOwnProperty('id')) {
+				successCallback(null);
+			} else {
+				$http.post(this.urls.byId.replace('{eventId}', event.id))
+					.success(function(data) {
+						successCallback(Event.createDTO(data));
+					})
+					.error(errorCallback);
+			}
+		};
 	};
 
 	return eventRepository;
