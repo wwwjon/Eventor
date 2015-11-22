@@ -8,9 +8,10 @@ define(['app/model/event'], function(Event) {
 		this.scope.hours = this.createNumberSerie(0,1,23,2);
 		this.scope.minutes = this.createNumberSerie(0,5,59,2);
 		this.scope.event = new Event();
+		this.scope.mindate = new Date();
 
 		this.scope.add = function(newEvent) {
-			newEvent.times.begin = new Date(
+			/*newEvent.times.begin = new Date(
 				newEvent.times.begin.date.getFullYear(),
 				newEvent.times.begin.date.getMonth(),
 				newEvent.times.begin.date.getDate(),
@@ -25,7 +26,7 @@ define(['app/model/event'], function(Event) {
 				newEvent.times.end.time.hours,
 				newEvent.times.end.time.minutes,
 				0
-			);
+			); */
 
 			EventRepository.add(
 				newEvent,
