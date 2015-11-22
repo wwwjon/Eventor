@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f2e0406-2600-453b-97d9-5bb9c4407d0e" name="Default" comment="guests &amp; Design">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+    <list default="true" id="9f2e0406-2600-453b-97d9-5bb9c4407d0e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/server.js" afterPath="$PROJECT_DIR$/App/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/classes/controllers/event/detailController.js" afterPath="$PROJECT_DIR$/App/webapp/source/classes/controllers/event/detailController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/classes/model/event.js" afterPath="$PROJECT_DIR$/App/webapp/source/classes/model/event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/classes/modules/eventor.js" afterPath="$PROJECT_DIR$/App/webapp/source/classes/modules/eventor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/classes/repository/EventRepository.js" afterPath="$PROJECT_DIR$/App/webapp/source/classes/repository/EventRepository.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/index.html" afterPath="$PROJECT_DIR$/App/webapp/source/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/views/event/detail.html" afterPath="$PROJECT_DIR$/App/webapp/source/views/event/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/views/event/edit.html" afterPath="$PROJECT_DIR$/App/webapp/source/views/event/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/views/event/list.html" afterPath="$PROJECT_DIR$/App/webapp/source/views/event/list.html" />
     </list>
     <list id="a5ad1c80-bf61-4073-b50f-545845cedb67" name="Rejected commit: Default" comment="guests &amp; Design">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/webapp/source/classes/controllers/event/editController.js" afterPath="$PROJECT_DIR$/App/webapp/source/classes/controllers/event/editController.js" />
@@ -590,7 +579,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448216373629</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="guests &amp; Design">
+      <created>1448216485319</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1448216485319</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">

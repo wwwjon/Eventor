@@ -5,6 +5,7 @@ define(['app/model/event'], function(Event) {
 
 
 		this.scope = $scope;
+		this.scope.mindate = new Date();
 		this.scope.hours = this.createNumberSerie(0,1,23,2);
 		this.scope.minutes = this.createNumberSerie(0,5,59,2);
 
@@ -12,8 +13,11 @@ define(['app/model/event'], function(Event) {
 			{ id: $routeParams.eventId },
 			function(event) {
 				this.scope.event = event;
+				console.log(event);
 			}.bind(this),
-			function() {}
+			function() {
+				$location.path('/events/');
+			}
 		);
 
 		this.scope.add = function(newEvent) {
@@ -22,9 +26,12 @@ define(['app/model/event'], function(Event) {
 			EventRepository.update(
 				newEvent,
 				function(event) {
+					console.log(event);
 					$location.path('/events/'+event.id);
 				},
-				function() {}
+				function() {
+					$location.path('/events/');
+				}
 			);
 		};
 	};

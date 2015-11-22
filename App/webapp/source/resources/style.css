@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	background-color: #ECF0F5;
+	font-family: "Open Sans",sans-serif;
+	margin: 0;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+a:hover {
+	text-decoration: none;
+}
+#header {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #333;
+	padding: 50px;
+	text-align: center;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+#header h1 {
+	font-size: 4rem;
+	margin: 0;
+	color: #FFF;
+}
+#footer {
+	background-color: #333;
+	color: #FFF;
+	font-size: 1rem;
+	text-align: center;
+	padding: 20px 0;
+}
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 90%;
+	margin: 280px auto 0;
+}
+#placeholder {
+	flex: 1;
+}
+.event {
+	flex-basis: 300px;
+    position: relative;
+    border-radius: 5px;
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+	margin: 0 15px 30px;
+}
+.event-date {
+    padding: 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+	color: #FFF;
+	text-align: center;
+}
+.event-month {
+	font-size: 1.5rem;
+}
+.event-day {
+	font-size: 4rem;
+}
+.event-dayname {
+	font-size: 1.5rem;
+}
+#container .event:nth-child(4n+1) .event-date {
+	background-color: #00C0EF;
+}
+#container .event:nth-child(4n+2) .event-date {
+	background-color: #00A65A;
+}
+#container .event:nth-child(4n+3) .event-date {
+	background-color: #F39C12;
+}
+#container .event:nth-child(4n+4) .event-date {
+	background-color: #DD4B39;
+}
+#container .event:nth-child(4n+1) .event-title {
+	color: #00C0EF;
+}
+#container .event:nth-child(4n+2) .event-title {
+	color: #00A65A;
+}
+#container .event:nth-child(4n+3) .event-title {
+	color: #F39C12;
+}
+#container .event:nth-child(4n+4) .event-title {
+	color: #DD4B39;
+}
+.event-details {
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px 30px 30px;
+    background-color: #FFF;
+	align-self: stretch;
+}
+.event-details > div {
+	padding-left: 35px;
+}
+.event-details > div i {
+	margin-left: -35px;
+}
+.event-page .row {
+	margin: 0;
+	display:flex
+}
+.event-page .event-date {
+	background-color: #00C0EF;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.fa {
+    width: 30px;
+    text-align: center;
+}
+textarea {
+	resize: vertical;
+}
