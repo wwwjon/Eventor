@@ -1,68 +1,80 @@
-<nav>
-	&larr; <a href="#/">Events</a>
-</nav>
-<h2>Event</h2>
-<form class="pane">
-	<div class="formline">
-		<label>name</label>
-		<input type="text" data-ng-model="event.name" required />
-	</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<form class="form-group" role="form">
+							<div class="form-group">
+								<label for="event-name">Name</label>
+								<input type="text" class="form-control" id="event-name" placeholder="Event Name" data-ng-model="event.name" required>
+							</div>
+							<div class="form-group">
+								<label for="event-description">Description</label>
+								<textarea class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required rows="2"></textarea>
+								<!--<input type="text" class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required>-->
+							</div>
+							<div class="form-group">
+								<label for="event-target-group">Target group</label>
+								<input type="text" class="form-control" id="event-target-group" placeholder="Target group" data-ng-model="event.targetGroup" required>
+							</div>
+							<div class="form-group">
+								<label for="event-max-guests">Maximal amount of guests</label>
+								<input type="number" class="form-control" id="event-max-guests" data-ng-model="event.maximalAmountOfGuests" required>
+							</div>
+							<div class="form-group">
+								<label for="event-cont-desc">Event contribution description</label>
+								<input type="text" class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required>
+							</div>
+						</form>
+					</div>
 
-	<div class="formline">
-		<label>Description</label>
-		<input type="text" data-ng-model="event.description" required />
-	</div>
-
-	<div class="formline">
-		<label>Maximal amount of guests</label>
-		<input type="number" data-ng-model="event.maximalAmoutOfGuests" />
-	</div>
-
-	<div class="formline">
-		<label>Target group</label>
-		<input type="text" data-ng-model="event.targetGroup" />
-	</div>
-
-	<div class="formline">
-		<label>Event contribution description</label>
-		<input type="text" data-ng-model="event.contributionsDescription" />
-	</div>
-
-	<div class="formline">
-		<label>Location</label>
-		<input type="text" data-ng-model="event.location.name" placeholder="Name" required />
-		<input type="text" data-ng-model="event.location.street" placeholder="Street" required />
-		<input type="text" data-ng-model="event.location.plz" placeholder="ZIP Code" required/>
-		<input type="text" data-ng-model="event.location.city" placeholder="City" required/>
-	</div>
-
-	<div class="formline">
-		<label>Date &amp; Times</label>
-			<input type="text" data-ng-model="event.times.begin" placeholder="Name" required />
-		<input type="text" data-ng-model="event.times.end" placeholder="Name" required />
-		<!--<div class="formline inline col-6-2-2">
-			<input type="date" data-ng-model="event.times.begin.date" placeholder="begin, e.g. 1990-12-30" required />
-
-			<select class="hours" data-ng-model="event.times.begin.time.hours"
-					data-ng-init="event.times.begin.time.hours = hours[12]"
-					data-ng-options="hour for hour in hours"></select>
-			<select class="minutes" data-ng-model="event.times.begin.time.minutes"
-					data-ng-init="event.times.begin.time.minutes = minutes[0]"
-					data-ng-options="minute for minute in minutes"></select>
+					<div class="col-lg-6">
+						<form class="form-group" role="form">
+							<div class="form-group">
+								<label for="event-times-begin">Event begin</label>
+								<input type="datetime-local" class="form-control" id="event-times-begin" data-ng-model="event.times.begin" min="{{minDate | date:'yyyy-MM-ddTHH:mm:ss'}}" required />
+							</div>
+							<div class="form-group">
+								<label for="event-times-end">Event end</label>
+								<input type="datetime-local" class="form-control" id="event-times-end" data-ng-model="event.times.end" required />
+							</div>
+							<div class="form-group">
+								<label for="event-location-name">Location Name</label>
+								<input type="text" class="form-control" id="event-location-name" placeholder="Name" data-ng-model="event.location.name" required />
+							</div>
+							<div class="form-group">
+								<label for="event-location-street">Street</label>
+								<input type="text" class="form-control" id="event-location-street" placeholder="Street" data-ng-model="event.location.street" required />
+							</div>
+							<div class="form-group">
+								<label>ZIP Code / City</label>
+									<input type="text" class="form-control" placeholder="ZIP Code" data-ng-model="event.location.plz" required/>
+									<input type="text" class="form-control" placeholder="City" data-ng-model="event.location.city" required/>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-6">
+						<form class="form-group" role="form">
+							<div class="form-group">
+								<a class="btn btn-default btn-block" href="#/" role="button">Cancel</a>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-6">
+						<form class="form-group" role="form">
+							<div class="form-group">
+								<button type="button" class="btn btn-primary btn-block" data-ng-click="add(event)">Save</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.col-lg-6 (nested) -->
+				</div>
+				<!-- /.row (nested) -->
+			</div>
+			<!-- /.panel-body -->
 		</div>
-		<div class="formline inline col-6-2-2">
-			<input  data-ng-model="event.times.end.date" placeholder="end, e.g. 1990-12-31"  type="date" required />
-
-			<select class="hours" data-ng-model="event.times.end.time.hours"
-					data-ng-init="event.times.end.time.hours = hours[13]"
-					data-ng-options="hour for hour in hours"></select>
-			<select class="minutes" data-ng-model="event.times.end.time.minutes"
-					data-ng-init="event.times.end.time.minutes = minutes[0]"
-					data-ng-options="minute for minute in minutes"></select>
-		</div>-->
+		<!-- /.panel -->
 	</div>
-
-	<div class="formline">
-		<input type="submit" data-ng-click="add(event)" value="Save" />
-	</div>
-</form>
+	<!-- /.col-lg-12 -->
+</div>

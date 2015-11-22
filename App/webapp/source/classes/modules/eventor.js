@@ -12,7 +12,7 @@ define(['frameworks/angular', 'app/controllers/event/listController', 'app/contr
 	EventListController.$inject = ['$scope', 'EventRepository'];
 	Eventor.controller('EventListController', EventListController);
 
-    EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository'];
+    EventDetailController.$inject = ['$scope', '$location', '$routeParams', 'EventRepository'];
     Eventor.controller('EventDetailController', EventDetailController);
 
 	EventAddController.$inject = ['$scope', '$location', 'EventRepository'];

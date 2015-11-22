@@ -1,7 +1,29 @@
-<ul>
-    <li data-ng-repeat="event in events">
-        <a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong><br /></a>
-        {{event.id}}, {{event.location.name}}, {{event.location.street}}, {{event.location.zipCode}} {{event.location.city}}<br />
-        {{event.event.begin | date:"dd.MM.yy HH:mm"}} - {{event.event.end | date:"dd.MM.yy HH:mm"}}
-    </li>
-</ul>
+<div data-ng-repeat="event in events" class="event panel panel-default event-list">
+    <a class="event-title" data-ng-href="#/events/{{event.id}}">
+        <div class="event-date">
+            <div class="event-month">{{event.times.begin | date:"MMMM yyyy"}}</div>
+            <div class="event-day">{{event.times.begin | date:"dd"}}</div>
+            <div class="event-dayname">{{event.times.begin | date:"EEEE"}}</div>
+        </div>
+    </a>
+    <div class="event-details">
+        <a class="event-title" data-ng-href="#/events/{{event.id}}"><h2>{{event.name}}</h2></a>
+        <div class="event-time">
+            <i class="fa fa-clock-o"></i>
+            {{event.times.begin | date:"dd.MM.yy HH:mm"}} - {{event.times.end | date:"dd.MM.yy HH:mm"}}
+        </div>
+        <div class="event-location">
+            <i class="fa fa-map-marker"></i>
+            {{event.location.name}}, {{event.location.street}}, {{event.location.zipCode}} {{event.location.city}}
+        </div>
+        <div class="event-guests">
+            <i class="fa fa-users"></i>
+            {{event.maximalAmountOfGuests}} guests
+        </div>
+        <p>
+            <div class="form-group">
+                <a class="btn btn-default btn-block" data-ng-href="#/events/{{event.id}}" role="button">Details</a>
+            </div>
+        </p>
+    </div>
+</div>

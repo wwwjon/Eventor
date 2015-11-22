@@ -1,13 +1,33 @@
-<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Eventor</title>
-    <!--<link rel="stylesheet" href="./resources/styles/app.css">-->
-</head>
-<body>
-<h1>Eventor</h1>
-<div data-ng-view></div>
-<script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
-</body>
+    <meta name="description" content="A smart event management app">
+    <meta name="author" content="Kilian Diener & Jonas Wälter">
+    <link rel="icon" href="./resources/favicon.ico">
+    <link href="./resources/bootstrap.min.css" rel="stylesheet">
+    <link href="./resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="./resources/style.css" rel="stylesheet">
+  </head>
+
+  <body role="document">
+
+    <header id="header">
+      <a href="#/">
+      <img class="logo" src="./resources/logo.png" alt="" height="100" width="100">
+      <h1>Eventor</h1>
+      </a>
+    </header>
+
+    <div data-ng-view class="container-fluid" id="container" role="main">
+    </div>
+    <div id="placeholder"></div>
+    <footer id="footer">
+      <div>Copyright © 2015 Kilian Diener & Jonas Wälter. All rights reserved. </div>
+    </footer>
+    <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
+  </body>
 </html>

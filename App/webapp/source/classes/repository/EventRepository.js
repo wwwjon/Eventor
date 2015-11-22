@@ -42,7 +42,7 @@ define(['app/model/event'], function(Event) {
 			if (!event || !event.hasOwnProperty('id')) {
 				successCallback(null);
 			} else {
-				$http.post(this.urls.byId.replace('{eventId}', event.id))
+				$http.post(this.urls.byId.replace('{eventId}', event.id), event)
 					.success(function(data) {
 						successCallback(Event.createDTO(data));
 					})
