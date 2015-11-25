@@ -9,6 +9,8 @@ define(['app/services/uuidService'], function(UUIDService) {
         this.contributionsDescription = contributionsDescription;
         this.location = location;
         this.times = times;
+		this.times.begin = new Date(times.begin);
+		this.times.end = new Date(times.end);
         this.maximalAmountOfGuests = maximalAmountOfGuests;
         this.guests = guests;
 
