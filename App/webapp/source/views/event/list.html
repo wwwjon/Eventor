@@ -1,5 +1,5 @@
 <div class = "AddEventbutton">
-		<a class="btn btn-default" href="#/events/new" role="button">Add new Event</a>
+		<a class="btn btn-default" href="#/events/new" role="button"><i class="fa fa-plus-circle"></i>Add new Event</a>
 </div>
 <div data-ng-repeat="event in events" class="event panel panel-default event-list">
     <a class="event-title" data-ng-href="#/events/{{event.id}}">
@@ -25,7 +25,7 @@
         </div>
         <p>
             <div class="form-group">
-                <a class="btn btn-default btn-block" data-ng-href="#/events/{{event.id}}" role="button">Details</a>
+                <a class="btn btn-default btn-block" data-ng-href="#/events/{{event.id}}" role="button"><i class="fa fa-info-circle"></i>Details</a>
             </div>
         </p>
     </div>

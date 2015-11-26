@@ -139,12 +139,12 @@ app.get('/api/events', function(request, response) {
 
 app.post('/api/events', function(request, response) {
     var event = createEvent(
-       request.body.id,
-       request.body.name,
-       request.body.description,
-       request.body.targetGroup,
-       request.body.contributionsDescription,
-       request.body.location,
+        request.body.id,
+        request.body.name,
+        request.body.description,
+        request.body.targetGroup,
+        request.body.contributionsDescription,
+        request.body.location,
         request.body.times,
         request.body.maximalAmountOfGuests
    );
@@ -206,13 +206,20 @@ app.get('/api/events/:id/guests', function(request, response) {
 app.post('/api/events/:id/guests', function(request, response) {
     var event = findEvent(request.params.id);
     if(event){
-        response.json(createGuest(
-            event,
-			request.body.id,
-			request.body.name,
-            request.body.contribution,
-            request.body.comment
-        ));
+        var countGuests = event.guests.filter(function (guest) {
+            return !guest.canceled;
+        }).length;
+        if (countGuests < event.maximalAmountOfGuests) {
+            response.json(createGuest(
+                event,
+                request.body.id,
+                request.body.name,
+                request.body.contribution,
+                request.body.comment
+            ));
+        } else {
+            response.status(404).send('Max count of guests achieved.')
+        }
     } else{
         response.status(404).send('Event (id '+request.params.id+') not found.')
     }
