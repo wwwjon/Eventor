@@ -43,13 +43,11 @@ a:hover {
 	margin:280px auto 0;
 }
 
-.panel-body {
+#eventDetailView{
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	flex-wrap: wrap;
 }
-
-
 
 #placeholder {
 	flex: 1;
@@ -119,6 +117,8 @@ a:hover {
 	display:flex
 }
 .event-page .event-date {
+	align-self: stretch;
+	flex-grow: 1;
 	background-color: #00C0EF;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -140,9 +140,14 @@ textarea {
 	margin-top: -2rem;
 	margin-bottom: 2rem;
 }
+
+input:invalid.ng-touched {
+	border: 1px solid red;
+}
+
 @media screen and (max-height: 750px) {
 	.AddEventbutton {
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 	#header {
 		padding: 10px;
@@ -162,5 +167,6 @@ textarea {
 	}
 	#container {
 		margin-top: 50px;
+		padding-top: 1rem;
 	}
 }
