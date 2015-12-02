@@ -40,8 +40,17 @@ a:hover {
 	flex-wrap: wrap;
 	justify-content: center;
 	width: 90%;
-	margin: 280px auto 0;
+	margin:280px auto 0;
 }
+
+.panel-body {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+
+
 #placeholder {
 	flex: 1;
 }
@@ -130,5 +139,28 @@ textarea {
 	width: 100%;
 	margin-top: -2rem;
 	margin-bottom: 2rem;
-
+}
+@media screen and (max-height: 750px) {
+	.AddEventbutton {
+		margin-top: 2rem;
+	}
+	#header {
+		padding: 10px;
+	}
+	#header a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#header h1 {
+		margin-left: 20px;
+		font-size: 2rem;
+	}
+	#header .logo {
+		height: 30px;
+		width: 30px;
+	}
+	#container {
+		margin-top: 50px;
+	}
 }

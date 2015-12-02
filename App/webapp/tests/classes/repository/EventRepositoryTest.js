@@ -1,9 +1,9 @@
-define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/EventRepository', 'libraries/angularMocks'], function (EventFactory, Event, EventRepository, AngularMocks) {
+define(['tests/factories/eventFactory', 'tests/factories/eventStorageFactory','app/model/event', 'app/repository/EventRepository','libraries/angularMocks'], function (EventFactory, EventStorageFactory, Event, EventRepository, AngularMocks) {
     'use strict';
 
     describe('EventRepository', function() {
         var event, eventRepository, $http, $httpBackend;
-        var eventStorage = [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}];
+        var eventStorage = EventStorageFactory.createEventStorage();
 
         function findEvent(id) {
             return eventStorage.filter(function(event) {
