@@ -3,9 +3,8 @@ define(['app/model/event'], function(Event) {
 
 	var EventEditController = function($scope, $location, $routeParams, EventRepository) {
 
-
 		this.scope = $scope;
-		this.scope.mindate = new Date();
+		this.scope.minDate = new Date();
 		this.scope.hours = this.createNumberSerie(0,1,23,2);
 		this.scope.minutes = this.createNumberSerie(0,5,59,2);
 

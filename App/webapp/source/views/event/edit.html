@@ -11,7 +11,7 @@
 							</div>
 							<div class="form-group">
 								<label for="event-description">Description</label>
-								<textarea class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required rows="2"></textarea>
+								<textarea class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required rows="3"></textarea>
 								<!--<input type="text" class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required>-->
 							</div>
 							<div class="form-group">
@@ -24,7 +24,8 @@
 							</div>
 							<div class="form-group">
 								<label for="event-cont-desc">Event contribution description</label>
-								<input type="text" class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required>
+								<!--<input type="text" class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required>-->
+								<textarea class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required rows="2"></textarea>
 							</div>
 						</form>
 					</div>
@@ -33,11 +34,15 @@
 						<form class="form-group" role="form">
 							<div class="form-group">
 								<label for="event-times-begin">Event begin</label>
-								<input type="datetime-local" class="form-control" id="event-times-begin" data-ng-model="event.times.begin" min="{{minDate | date:'yyyy-MM-ddTHH:mm:ss'}}" required />
+								<!--<input type="datetime-local" class="form-control" id="event-times-begin" data-ng-model="event.times.begin" min="{{minDate | date:'yyyy-MM-ddTHH:mm:ss'}}" required />-->
+								<input type="date" class="form-control" id="event-date-begin" data-ng-model="event.times.begin" required />
+								<input type="time" class="form-control" id="event-time-begin" data-ng-model="event.times.begin" required />
 							</div>
 							<div class="form-group">
 								<label for="event-times-end">Event end</label>
-								<input type="datetime-local" class="form-control" id="event-times-end" data-ng-model="event.times.end" required />
+								<!--<input type="datetime-local" class="form-control" id="event-times-end" data-ng-model="event.times.end" required />-->
+								<input type="date" class="form-control" id="event-date-end" data-ng-model="event.times.end" required />
+								<input type="time" class="form-control" id="event-time-end" data-ng-model="event.times.end" required />
 							</div>
 							<div class="form-group">
 								<label for="event-location-name">Location Name</label>
