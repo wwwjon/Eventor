@@ -22,11 +22,15 @@ define(['app/model/event'], function(Event) {
 
 
         this.add = function(event, guest, successCallback, errorCallback) {
-            $http.post(this.urls.add.replace('{eventId}', event.id), guest)
-                .success(function(data) {
-                    successCallback(data);
-                })
-                .error(errorCallback);
+            if (!event || !event.hasOwnProperty('id') || !guest || !guest.hasOwnProperty('id')) {
+                successCallback(null);
+            } else {
+                $http.post(this.urls.add.replace('{eventId}', event.id), guest)
+                    .success(function (data) {
+                        successCallback(data);
+                    })
+                    .error(errorCallback);
+            }
         };
 
 		this.update = function(event, guest, successCallback, errorCallback) {

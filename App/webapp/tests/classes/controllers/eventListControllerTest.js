@@ -1,4 +1,5 @@
-define(['app/controllers/event/listController', 'frameworks/angular', 'libraries/angularMocks', 'app/repository/EventRepository'], function (EventListController, Angular, AngularMocks, EventRepository) {
+define(['app/controllers/event/listController', 'frameworks/angular', 'libraries/angularMocks', 'app/repository/EventRepository', 'tests/factories/eventStorageFactory'],
+    function (EventListController, Angular, AngularMocks, EventRepository, EventStorageFactory) {
     'use strict';
 
     var eventRepository, scope, $httpBackend;
@@ -6,7 +7,7 @@ define(['app/controllers/event/listController', 'frameworks/angular', 'libraries
     beforeEach(AngularMocks.inject(function ($injector) {
         scope = $injector.get('$rootScope').$new();
 
-        var events = [{id: 1, name: 'Dinner'},{id: 2, name: 'Lunch'},{id: 3, name: 'Brunch'}];
+        var events = EventStorageFactory.createEventStorage();
 
         eventRepository = {
             all: function(successCallback) {

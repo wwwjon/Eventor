@@ -110,7 +110,7 @@ a:hover {
 	padding-left: 35px;
 }
 .event-details > div i {
-	margin-left: -35px;
+	margin-left: -33.5px;
 }
 .event-page .row {
 	margin: 0;
@@ -119,12 +119,15 @@ a:hover {
 .event-page .event-date {
 	align-self: stretch;
 	flex-grow: 1;
-	background-color: #00C0EF;
+	background-color: #DD4B39;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+.event-page .panel {
+	flex-basis: 100%;
 }
 .fa {
     width: 30px;
@@ -135,14 +138,16 @@ textarea {
 }
 .AddEventbutton {
 	text-align: center;
-	color: pink;
 	width: 100%;
 	margin-top: -2rem;
 	margin-bottom: 2rem;
 }
-
-input:invalid.ng-touched {
-	border: 1px solid red;
+.BackButton {
+	text-align: center;
+	width: 100%;
+}
+.event-name {
+	color: #DD4B39;
 }
 
 @media screen and (max-height: 750px) {
@@ -168,5 +173,6 @@ input:invalid.ng-touched {
 	#container {
 		margin-top: 50px;
 		padding-top: 1rem;
+		width: 100%;
 	}
 }

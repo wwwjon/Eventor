@@ -3,76 +3,77 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
-							<div class="form-group">
-								<label for="event-name">Name</label>
-								<input type="text" class="form-control" id="event-name" placeholder="Event Name" data-ng-model="event.name" required>
-							</div>
-							<div class="form-group">
-								<label for="event-description">Description</label>
-								<textarea class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required rows="3"></textarea>
-								<!--<input type="text" class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required>-->
-							</div>
-							<div class="form-group">
-								<label for="event-target-group">Target group</label>
-								<input type="text" class="form-control" id="event-target-group" placeholder="Target group" data-ng-model="event.targetGroup" required>
-							</div>
-							<div class="form-group">
-								<label for="event-max-guests">Maximal amount of guests</label>
-								<input type="number" class="form-control" id="event-max-guests" data-ng-model="event.maximalAmountOfGuests" required>
-							</div>
-							<div class="form-group">
-								<label for="event-cont-desc">Event contribution description</label>
-								<!--<input type="text" class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required>-->
-								<textarea class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required rows="2"></textarea>
-							</div>
-						</form>
-					</div>
-
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
-							<div class="form-group">
-								<label for="event-times-begin">Event begin</label>
-								<!--<input type="datetime-local" class="form-control" id="event-times-begin" data-ng-model="event.times.begin" min="{{minDate | date:'yyyy-MM-ddTHH:mm:ss'}}" required />-->
-								<input type="date" class="form-control" id="event-date-begin" data-ng-model="event.times.begin" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"/>
-								<input type="time" class="form-control" id="event-time-begin" data-ng-model="event.times.begin" required />
-							</div>
-							<div class="form-group">
-								<label for="event-times-end">Event end</label>
-								<!--<input type="datetime-local" class="form-control" id="event-times-end" data-ng-model="event.times.end" required />-->
-								<input type="date" class="form-control" id="event-date-end" data-ng-model="event.times.end" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"/>
-								<input type="time" class="form-control" id="event-time-end" data-ng-model="event.times.end" required />
-							</div>
-							<div class="form-group">
-								<label for="event-location-name">Location Name</label>
-								<input type="text" class="form-control" id="event-location-name" placeholder="Name" data-ng-model="event.location.name" required />
-							</div>
-							<div class="form-group">
-								<label for="event-location-street">Street</label>
-								<input type="text" class="form-control" id="event-location-street" placeholder="Street" data-ng-model="event.location.street" required />
-							</div>
-							<div class="form-group">
+					<form class="form-group" role="form" name="editEvent" novalidate>
+						<div class="col-lg-6">
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventname.$invalid && !editEvent.eventname.$pristine }">
+									<label for="event-name">Name</label>
+									<input type="text" class="form-control" id="event-name" name="eventname" placeholder="Event Name" data-ng-model="event.name" required>
+									</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventdescription.$invalid && !editEvent.eventdescription.$pristine }">
+									<label for="event-description">Description</label>
+									<textarea class="form-control" id="event-description" name="eventdescription" placeholder="Description" data-ng-model="event.description" required rows="3"></textarea>
+									<!--<input type="text" class="form-control" id="event-description" placeholder="Description" data-ng-model="event.description" required>-->
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventtargetgroup.$invalid && !editEvent.eventtargetgroup.$pristine }">
+									<label for="event-target-group">Target group</label>
+									<input type="text" class="form-control" id="event-target-group" name="eventtargetgroup" placeholder="Target group" data-ng-model="event.targetGroup" required>
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventmaxguests.$invalid && !editEvent.eventmaxguests.$pristine }">
+									<label for="event-max-guests">Maximal amount of guests</label>
+									<input type="number" class="form-control" id="event-max-guests" name="eventmaxguests" data-ng-model="event.maximalAmountOfGuests" required>
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventcontdesc.$invalid && !editEvent.eventcontdesc.$pristine }">
+									<label for="event-cont-desc">Event contribution description</label>
+									<!--<input type="text" class="form-control" id="event-cont-desc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required>-->
+									<textarea class="form-control" id="event-cont-desc" name="eventcontdesc" placeholder="Event contribution description" data-ng-model="event.contributionsDescription" required rows="2"></textarea>
+								</div>
+						</div>
+						<div class="col-lg-6">
+								<label for="event-date-begin">Event begin</label>
+								<div class="form-group form-inline" ng-class="{ 'has-error' : (editEvent.eventdatebegin.$invalid && !editEvent.eventdatebegin.$pristine) || (editEvent.eventtimebegin.$invalid && !editEvent.eventtimebegin.$pristine) }">
+									<!--<input type="datetime-local" class="form-control" id="event-times-begin" data-ng-model="event.times.begin" min="{{minDate | date:'yyyy-MM-ddTHH:mm:ss'}}" required />-->
+									<input type="date" class="form-control" id="event-date-begin" name="eventdatebegin" data-ng-model="event.times.begin" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"/>
+									<input type="time" class="form-control" id="event-time-begin" name="eventtimebegin" data-ng-model="event.times.begin" required />
+								</div>
+								<label for="event-date-end">Event end</label>
+								<div class="form-group form-inline" ng-class="{ 'has-error' : (editEvent.eventdateend.$invalid && !editEvent.eventdateend.$pristine) || (editEvent.eventtimeend.$invalid && !editEvent.eventtimeend.$pristine) }">
+									<!--<input type="datetime-local" class="form-control" id="event-times-end" data-ng-model="event.times.end" required />-->
+									<input type="date" class="form-control" id="event-date-end" name="eventdateend" data-ng-model="event.times.end" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"/>
+									<input type="time" class="form-control" id="event-time-end" name="eventtimeend" data-ng-model="event.times.end" required />
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventlocationname.$invalid && !editEvent.eventlocationname.$pristine }">
+									<label for="event-location-name">Location Name</label>
+									<input type="text" class="form-control" id="event-location-name" name="eventlocationname" placeholder="Name" data-ng-model="event.location.name" required />
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : editEvent.eventlocationstreet.$invalid && !editEvent.eventlocationstreet.$pristine }">
+									<label for="event-location-street">Street</label>
+									<input type="text" class="form-control" id="event-location-street" name="eventlocationstreet" placeholder="Street" data-ng-model="event.location.street" required />
+								</div>
 								<label>ZIP Code / City</label>
-									<input type="text" class="form-control" placeholder="ZIP Code" data-ng-model="event.location.plz" required/>
-									<input type="text" class="form-control" placeholder="City" data-ng-model="event.location.city" required/>
-							</div>
-						</form>
-					</div>
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
+								<div class="form-inline">
+									<div class="form-group" ng-class="{ 'has-error' : editEvent.eventlocationplz.$invalid && !editEvent.eventlocationplz.$pristine }">
+										<input type="text" class="form-control" id="event-location-plz" name="eventlocationplz" placeholder="ZIP Code" data-ng-model="event.location.plz" required/>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : editEvent.eventlocationcity.$invalid && !editEvent.eventlocationcity.$pristine }">
+										<input type="text" class="form-control" id="event-location-city" name="eventlocationcity" placeholder="City" data-ng-model="event.location.city" required/>
+									</div>
+								</div>
+						</div>
+					</form>
+				</div>
+				<div class="row">
+					<form class="form-group" role="form">
+						<div class="col-lg-6">
+								<div class="form-group">
+									<a class="btn btn-default btn-block" href="#/" role="button">Cancel</a>
+								</div>
+						</div>
+						<div class="col-lg-6">
 							<div class="form-group">
-								<a class="btn btn-default btn-block" href="#/" role="button">Cancel</a>
+								<button type="button" class="btn btn-primary btn-block" data-ng-click="add(event)" ng-disabled="editEvent.$invalid">Save</button>
 							</div>
-						</form>
-					</div>
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
-							<div class="form-group">
-								<button type="button" class="btn btn-primary btn-block" data-ng-click="add(event)">Save</button>
-							</div>
-						</form>
-					</div>
+						</div>
+					</form>
 					<!-- /.col-lg-6 (nested) -->
 				</div>
 				<!-- /.row (nested) -->

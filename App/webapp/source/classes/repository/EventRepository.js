@@ -31,11 +31,15 @@ define(['app/model/event'], function(Event) {
         };
 
         this.add = function(event, successCallback, errorCallback) {
-            $http.post(this.urls.add, event)
-                .success(function(data) {
-                    successCallback(Event.createDTO(data));
-                })
-                .error(errorCallback);
+            if (!event || !event.hasOwnProperty('name')) {
+                successCallback(null);
+            } else {
+                $http.post(this.urls.add, event)
+                    .success(function(data) {
+                        successCallback(Event.createDTO(data));
+                    })
+                    .error(errorCallback);
+            }
         };
 
 		this.update = function(event, successCallback, errorCallback) {

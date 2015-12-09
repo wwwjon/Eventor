@@ -20,7 +20,7 @@ var guestId = 0;
 var events = [];
 
 function createEvent(id, name, description, targetGroup, contributionsDescription, location, times, maximalAmountOfGuests){
-    if(name) {
+    if(name && !findEvent(id)) {
         var event = {
             id: (id) ? id : ++eventId,
             name : name,
@@ -87,7 +87,7 @@ var event1 = createEvent(
         begin: new Date('2015-11-15T19:00:00'),
         end: new Date('2015-11-16T03:00:00')
     },
-    99
+    10
 );
 createGuest(event1, null, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
 var g1 = createGuest(event1, null, "Hans", "Hotdog-Cake", null );
@@ -109,13 +109,30 @@ var event2 = createEvent(
         begin: new Date('2015-11-20T18:00:00'),
         end: new Date('2015-11-20T21:00:00')
     },
-    100
+    20
 );
 
 createGuest(event2, null, "F. Meier", null, null );
 var g2 = createGuest(event2, null, "Fritz", "Salat", null );
 g2.canceled = true;
-
+var event3 = createEvent(
+    null,
+    "Christmas Bar",
+    "Christmas Party an der HSR",
+    "Studenten",
+    "gute Laune",
+    {
+        name: "HSR",
+        street: "Oberseestrasse",
+        plz: 8640,
+        city: "Rapperswil"
+    },
+    {
+        begin: new Date('2015-12-11T16:00:00'),
+        end: new Date('2015-12-11T22:59:59')
+    },
+    100
+);
 
 /**
  * Basic server

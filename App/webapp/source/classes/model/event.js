@@ -3,17 +3,16 @@ define(['app/services/uuidService'], function(UUIDService) {
 
     var Event = function(name, description, targetGroup, contributionsDescription, location, times, maximalAmountOfGuests, id, guests) {
         this.id = id || UUIDService.getRandomUuid();
-        this.name = name;
+        this.name = name || "new Event";
         this.description = description;
         this.targetGroup = targetGroup;
         this.contributionsDescription = contributionsDescription;
         this.location = location;
         this.times = times;
-        console.log(times);
 		this.times.begin = new Date(times.begin);
 		this.times.end = new Date(times.end);
-        this.maximalAmountOfGuests = maximalAmountOfGuests;
-        this.guests = guests;
+        this.maximalAmountOfGuests = maximalAmountOfGuests || 0;
+        this.guests = guests || [] ;
 
         Object.defineProperty(this, 'begin', {
             get: function() {

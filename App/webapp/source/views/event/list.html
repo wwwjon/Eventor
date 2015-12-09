@@ -1,7 +1,7 @@
 <div class = "AddEventbutton">
 		<a class="btn btn-default" href="#/events/new" role="button"><i class="fa fa-plus-circle"></i>Add new Event</a>
 </div>
-<div data-ng-repeat="event in events" class="event panel panel-default event-list">
+<div data-ng-repeat="event in events | orderBy:'times.begin' " class="event panel panel-default">
     <a class="event-title" data-ng-href="#/events/{{event.id}}">
         <div class="event-date">
             <div class="event-month">{{event.times.begin | date:"MMMM yyyy"}}</div>
@@ -21,7 +21,7 @@
         </div>
         <div class="event-guests">
             <i class="fa fa-users"></i>
-            {{event.maximalAmountOfGuests}} guests
+            {{guests = (event.guests | filter: { canceled: false }); guests.length}} / {{event.maximalAmountOfGuests}} guests
         </div>
         <p>
             <div class="form-group">

@@ -4,10 +4,14 @@ define(['app/model/event'], function(Event) {
 	var EventAddController = function($scope, $location, EventRepository) {
 
 		this.scope = $scope;
-		this.scope.event = {};
+		this.scope.event = { times: {} };
 		this.scope.minDate = new Date();
-		//this.scope.event.begin = new Date();
-		//this.scope.event.end = new Date();
+		this.scope.event.times.begin = new Date();
+		this.scope.event.times.begin.setMilliseconds(0);
+		this.scope.event.times.begin.setSeconds(0);
+		this.scope.event.times.end = new Date();
+		this.scope.event.times.end.setMilliseconds(0);
+		this.scope.event.times.end.setSeconds(0);
 
 		this.scope.add = function(newEvent) {
 

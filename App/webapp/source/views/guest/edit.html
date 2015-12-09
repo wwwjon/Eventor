@@ -3,41 +3,37 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-lg-12">
-						<div data-ng-if="error" class="alert alert-danger" role="alert">
-							<i class="fa fa-exclamation-triangle"></i> {{error}}
-						</div>
-						<form class="form-group" role="form">
-							<div class="form-group">
+					<form class="form-group" role="form" name="editGuest" novalidate>
+						<div class="col-lg-12">
+							<div data-ng-if="error" class="alert alert-danger" role="alert">
+								<i class="fa fa-exclamation-triangle"></i> {{error}}
+							</div>
+							<div class="form-group" ng-class="{ 'has-error' : editGuest.guestname.$invalid && !editGuest.guestname.$pristine }">
 								<label for="guest-name">Name</label>
-								<input type="text" class="form-control" id="guest-name" placeholder="Name" data-ng-model="guest.name" required>
+								<input type="text" class="form-control" id="guest-name" name="guestname" placeholder="Name" data-ng-model="guest.name" required>
 							</div>
 							<div class="form-group">
 								<label for="guest-contribution">Contribution</label>
-								<input type="text" class="form-control" id="guest-contribution" placeholder="Contribution" data-ng-model="guest.contribution" required>
+								<input type="text" class="form-control" id="guest-contribution" name="guestcont" placeholder="Contribution" data-ng-model="guest.contribution">
 							</div>
 							<div class="form-group">
 								<label for="guest-comment">Comment</label>
-								<textarea class="form-control" id="guest-comment" placeholder="Comment" data-ng-model="guest.comment" required rows="2"></textarea>
+								<textarea class="form-control" id="guest-comment" name="guestcomment" placeholder="Comment" data-ng-model="guest.comment" rows="2"></textarea>
 							</div>
-						</form>
-					</div>
-					<!-- /.col-lg-6 (nested) -->
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
+						</div>
+						<!-- /.col-lg-6 (nested) -->
+						<div class="col-lg-6">
 							<div class="form-group">
 								<a class="btn btn-default btn-block" ng-href="#/events/{{eventId}}" role="button">Cancel</a>
 							</div>
-						</form>
-					</div>
-					<div class="col-lg-6">
-						<form class="form-group" role="form">
+						</div>
+						<div class="col-lg-6">
 							<div class="form-group">
-								<button type="button" class="btn btn-primary btn-block" data-ng-click="add(guest)">Save</button>
+								<button type="button" class="btn btn-primary btn-block" data-ng-click="add(guest)" ng-disabled="editGuest.$invalid">Save</button>
 							</div>
-						</form>
-					</div>
-					<!-- /.col-lg-6 (nested) -->
+						</div>
+						<!-- /.col-lg-6 (nested) -->
+					</form>
 				</div>
 				<!-- /.row (nested) -->
 			</div>

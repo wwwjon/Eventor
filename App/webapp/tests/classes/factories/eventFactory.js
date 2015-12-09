@@ -18,7 +18,7 @@ define(['app/model/event'], function (Event) {
                     begin: new Date('2015-10-10T18:00:00.000Z'),
                     end: new Date('2015-10-11T02:00:00.000Z')
                 },
-                null,
+                10,
                 identifier
             );
         }
