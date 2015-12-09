@@ -22,7 +22,7 @@ define(['app/model/event'], function(Event) {
 
 
         this.add = function(event, guest, successCallback, errorCallback) {
-            if (!event || !event.hasOwnProperty('id') || !guest || !guest.hasOwnProperty('id')) {
+            if (!event || !event.hasOwnProperty('id') || !guest || !guest.hasOwnProperty('name')) {
                 successCallback(null);
             } else {
                 $http.post(this.urls.add.replace('{eventId}', event.id), guest)
